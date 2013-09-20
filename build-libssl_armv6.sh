@@ -22,7 +22,7 @@
 #  Change values here													  #
 #																		  #
 VERSION="1.0.1e"													      #
-SDKVERSION="6.1"														  #
+SDKVERSION="5.1"														  #
 #																		  #
 ###########################################################################
 #																		  #
@@ -32,7 +32,7 @@ SDKVERSION="6.1"														  #
 
 
 CURRENTPATH=`pwd`
-ARCHS="i386 armv7 armv7s"
+ARCHS="armv6"
 DEVELOPER=`xcode-select -print-path`
 
 if [ ! -d "$DEVELOPER" ]; then
@@ -94,14 +94,14 @@ do
 	make clean >> "${LOG}" 2>&1
 done
 
-echo "Build library..."
-lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}-i386.sdk/lib/libssl.a  ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libssl.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7s.sdk/lib/libssl.a -output ${CURRENTPATH}/lib/libssl.a
+#echo "Build library..."
+#lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}-i386.sdk/lib/libssl.a  ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libssl.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7s.sdk/lib/libssl.a -output ${CURRENTPATH}/lib/libssl.a
 
-lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}-i386.sdk/lib/libcrypto.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libcrypto.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7s.sdk/lib/libcrypto.a -output ${CURRENTPATH}/lib/libcrypto.a
+#lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}-i386.sdk/lib/libcrypto.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libcrypto.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7s.sdk/lib/libcrypto.a -output ${CURRENTPATH}/lib/libcrypto.a
 
-mkdir -p ${CURRENTPATH}/include
-cp -R ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}-i386.sdk/include/openssl ${CURRENTPATH}/include/
-echo "Building done."
+#mkdir -p ${CURRENTPATH}/include
+#cp -R ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}-i386.sdk/include/openssl ${CURRENTPATH}/include/
+#echo "Building done."
 echo "Cleaning up..."
 rm -rf ${CURRENTPATH}/src/openssl-${VERSION}
 echo "Done."
